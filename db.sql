@@ -1,0 +1,100 @@
+-- Active: 1772416005858@@127.0.0.1@3306@AlloDoc
+/*** SCHEMA DB ALLO DOC **/
+
+CREATE SCHEMA IF NOT EXISTS AlloDoc;
+
+USE AlloDoc;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    fullName VARCHAR(255) NOT NULL,
+    email VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    photo_profil VARCHAR(255) NULL,
+    telephone VARCHAR(50) UNIQUE NULL
+    otp VARCHAR(255) NULL,
+    otp_expire DATETIME NULL,
+    est_actif BOOLEAN DEFAULT TRUE NOT NULL,
+    est_verifie BOOLEAN DEFAULT FALSE NOT NULL,
+    est_creer BOOLEAN DEFAULT FALSE NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE specialites (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    nom VARCHAR(50) UNIQUE NOT NULL,
+    description TEXT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE patients (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    userId INT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    Foreign Key (userId) REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE medecins (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    a_propos TEXT NULL,
+    formation TEXT NULL,
+    userId INT NULL,
+    specialiteId INT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    Foreign Key (userId) REFERENCES users(id) ON DELETE CASCADE,
+    Foreign Key (specialiteId) REFERENCES specialites(id) ON DELETE CASCADE
+);
+CREATE TABLE admins (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+
+    userId INT NULL,
+    Foreign Key (userId) REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE disponibilites (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    date DATE NOT NULL,
+    heures TIME NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    medecinId INT NULL,
+    Foreign Key (medecinId) REFERENCES medecins(id) ON DELETE CASCADE,
+    CONSTRAINT unique_creneau UNIQUE(medecinId, date, heures),
+);
+
+
+CREATE TABLE rendezVous (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    date DATE NOT NULL,
+    heures TIME NOT NULL,
+    statut ENUM('annulé', 'confirmé') DEFAULT 'confirmé' NOT NULL,
+    motif TEXT NULL,
+    est_passer BOOLEAN DEFAULT FALSE NOT NULL,
+    medecinId INT NULL,
+    patientId INT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    Foreign Key (patientId) REFERENCES patients(id) ON DELETE CASCADE,
+    Foreign Key (medecinId) REFERENCES medecins(id) ON DELETE CASCADE,
+    CONSTRAINT unique_rdv UNIQUE(medecinId, patientId, date, heures),
+);
+
+CREATE TABLE notes (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    valeur INT NOT NULL,
+
+    rendezVousId INT NULL,
+    Foreign Key (rendezVousId) REFERENCES rendezVous(id) ON DELETE CASCADE
+)

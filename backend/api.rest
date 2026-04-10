@@ -1,0 +1,282 @@
+
+### Inscription patient
+POST http://localhost:3000/api/auth/inscription HTTP/1.1
+Content-Type: application/json
+
+{
+    "fullName" : "Augustin Ml",
+    "email" : "maremillogo10+3@gmail.com",
+    "password" : "12345678",
+    "telephone" : "70000000"
+}
+
+### Verification email OK
+POST http://localhost:3000/api/auth/verifier-email HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzc0NTU3MDYyLCJleHAiOjE3NzQ1NTczNjJ9.HMFs5FtDSYIv-fdzzJij_CzLDk3sJZQcYjpWRFKLYbc
+
+{
+    "otp" : "631060"
+}
+
+### Connexion OK
+POST http://localhost:3000/api/auth/connexion HTTP/1.1
+Content-Type: application/json
+
+{
+    "email" : "maremillogo10+7@gmail.com",
+    "password" : "12345678"
+}
+
+### Reset password OK
+POST http://localhost:3000/api/auth/reset-password HTTP/1.1
+Content-Type: application/json
+
+{
+    "email" : "maremillogo10+2@gmail.com",
+    "password" : "12345678"
+}
+
+
+### Modifier password OK
+PUT http://localhost:3000/api/auth/modifier-password HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDIzMSwiZXhwIjoxNzc3MTE2MjMxfQ.YADgll3ejRcdEOgNzfz3tIqBTqxGYj9YR61An-748jg
+
+{
+    "password" : "12345677"
+}
+
+
+
+### Stats total RDV pour un medecin OK
+GET http://localhost:3000/api/medecin/stats-rdv HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsInJvbGUiOiJtZWRlY2luIiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTY5OTQ2NywiZXhwIjoxNzc4MjkxNDY3fQ.ds5uOKb4QjaxrPk1H3oNbmD5tcfprYpcbWyMEBOle-M
+
+### Infos patient reserver aujourdhui OK
+GET http://localhost:3000/api/medecin/infos-patient-rdv?page=1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsInJvbGUiOiJtZWRlY2luIiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTY5OTQ2NywiZXhwIjoxNzc4MjkxNDY3fQ.ds5uOKb4QjaxrPk1H3oNbmD5tcfprYpcbWyMEBOle-M
+
+
+
+
+### Mes rendez vous OK  Patient 
+GET http://localhost:3000/api/rdv/mes-rendez-vous HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInJvbGUiOiJwYXRpZW50IiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTU2MjI3MCwiZXhwIjoxNzc4MTU0MjcwfQ.c3l9tgDntDy0M4kgms4q5OBaJBxWwCPNms9foW9VDhI
+
+
+### Prendre un rdv OK
+POST http://localhost:3000/api/rdv/prendre HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInJvbGUiOiJwYXRpZW50IiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTU2MjI3MCwiZXhwIjoxNzc4MTU0MjcwfQ.c3l9tgDntDy0M4kgms4q5OBaJBxWwCPNms9foW9VDhI
+
+{
+    "date" : "2026-05-28",
+    "heures" : "22:15",
+    "medecinId" : 12
+}
+
+
+### Annuler un rdv (patient) OK
+PUT http://localhost:3000/api/rdv/annuler/9 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInJvbGUiOiJwYXRpZW50IiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTU2MjI3MCwiZXhwIjoxNzc4MTU0MjcwfQ.c3l9tgDntDy0M4kgms4q5OBaJBxWwCPNms9foW9VDhI
+
+### Supprimer un rdv (patient= OK
+DELETE  http://localhost:3000/api/rdv/supprimer/5 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDIzMSwiZXhwIjoxNzc3MTE2MjMxfQ.YADgll3ejRcdEOgNzfz3tIqBTqxGYj9YR61An-748jg
+
+### supprimer tous les rdv (patient) OK
+DELETE  http://localhost:3000/api/rdv/supprimer-tout HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDIzMSwiZXhwIjoxNzc3MTE2MjMxfQ.YADgll3ejRcdEOgNzfz3tIqBTqxGYj9YR61An-748jg
+
+
+
+
+
+### Infos perso medecin pour user medecin OK
+GET http://localhost:3000/api/medecin/infos HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsInJvbGUiOiJtZWRlY2luIiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTY5OTQ2NywiZXhwIjoxNzc4MjkxNDY3fQ.ds5uOKb4QjaxrPk1H3oNbmD5tcfprYpcbWyMEBOle-M
+
+### modifier info pour user medecin OK
+PUT http://localhost:3000/api/medecin/modifier/infos HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsInJvbGUiOiJtZWRlY2luIiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTY5OTQ2NywiZXhwIjoxNzc4MjkxNDY3fQ.ds5uOKb4QjaxrPk1H3oNbmD5tcfprYpcbWyMEBOle-M
+
+{
+    "fullName" : "Dr KABORE Cheick",
+    "a_propos" : "met consectetur adipisicing elit. Suscipit illum",
+    "formation" : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit illum fugiat soluta itaque necessitatibus pariatur, dolore, consequatur id reprehenderit perspiciatis consectetur. Pariatur tempora praesentium est! Sed molestias eos impedit quibusdam. Fuga, quaerat fugit at odit sequi laborum, ducimus cumque dolorum illo aspernatur consequatur pariatur dolores architecto iusto, possimus hic dicta. Molestiae eum eos quidem vel ipsa delectus asperiores culpa nam"
+}
+
+### infos perso patient pour user patient OK
+GET http://localhost:3000/api/patient/infos HTTP/1.1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInJvbGUiOiJwYXRpZW50IiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTU2MjI3MCwiZXhwIjoxNzc4MTU0MjcwfQ.c3l9tgDntDy0M4kgms4q5OBaJBxWwCPNms9foW9VDhI
+
+### modifier info patient pour user mpatient OK
+PUT http://localhost:3000/api/patient/modifier-infos HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInJvbGUiOiJwYXRpZW50IiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTU2MjI3MCwiZXhwIjoxNzc4MTU0MjcwfQ.c3l9tgDntDy0M4kgms4q5OBaJBxWwCPNms9foW9VDhI
+
+{
+    "fullName" : "Millogo Maré Augustin",
+    "email" : "maremillogo10+6@gmail.com",
+    "telephone" : "78458564"
+}
+
+
+
+### Créer un planning pour user medecin OK
+POST http://localhost:3000/api/horaires/ajouter HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsInJvbGUiOiJtZWRlY2luIiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTY5OTQ2NywiZXhwIjoxNzc4MjkxNDY3fQ.ds5uOKb4QjaxrPk1H3oNbmD5tcfprYpcbWyMEBOle-M
+
+{
+    "date" : "2026-04-09",
+    "heures" : "20:30"
+}
+
+
+### Horaires medecin pour user medecin OK
+GET http://localhost:3000/api/medecin/horaires HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsInJvbGUiOiJtZWRlY2luIiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTY5OTQ2NywiZXhwIjoxNzc4MjkxNDY3fQ.ds5uOKb4QjaxrPk1H3oNbmD5tcfprYpcbWyMEBOle-M
+
+
+### Modifier un planning pour user medecin OK
+PUT http://localhost:3000/api/horaires/modifier/22 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjksInJvbGUiOiJtZWRlY2luIiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTU0OTgwMywiZXhwIjoxNzc4MTQxODAzfQ.HAfD0oJBriM94Wqmt2lT2yXr_svFuJNFcGrALRaNYGE
+
+{
+    "date" : "2026/04/13",
+    "heures" : "14:30"
+}
+
+
+### Obtenir planning pour user medecin OK
+GET http://localhost:3000/api/horaires/listes HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjksInJvbGUiOiJtZWRlY2luIiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTU0OTgwMywiZXhwIjoxNzc4MTQxODAzfQ.HAfD0oJBriM94Wqmt2lT2yXr_svFuJNFcGrALRaNYGE
+
+
+### supprimer planning pour user medecin OK
+DELETE http://localhost:3000/api/horaires/delete/18 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjksInJvbGUiOiJtZWRlY2luIiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTU0OTgwMywiZXhwIjoxNzc4MTQxODAzfQ.HAfD0oJBriM94Wqmt2lT2yXr_svFuJNFcGrALRaNYGE
+
+
+
+
+
+
+
+
+
+
+### Liste des specialites pour user patient OK
+GET http://localhost:3000/api/specialites/listes?page=2 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDQ2NCwiZXhwIjoxNzc3MTE2NDY0fQ.cgUvtdhZROvw3q7uUaFex9zmP0xXlOTVQLWwBAUJTto
+
+
+### Liste des specialites avec total de medecins dispo pour user patient OK
+GET http://localhost:3000/api/specialites/listes-avec-medecins?page=2 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInJvbGUiOiJwYXRpZW50IiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTQ3MTQ5NywiZXhwIjoxNzc4MDYzNDk3fQ.XRSf06SFnwYk18I7qxyrU7tXZrp9ekK25hqEVsK4-4w
+
+### liste des medecins disponible d'une specialite donnée pour user patient OK
+GET http://localhost:3000/api/specialites/specialite/8/medecin?page=1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInJvbGUiOiJwYXRpZW50IiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTQ3MTQ5NywiZXhwIjoxNzc4MDYzNDk3fQ.XRSf06SFnwYk18I7qxyrU7tXZrp9ekK25hqEVsK4-4w
+
+
+### Liste des medecins avec leur specialites pour user patient OK
+GET http://localhost:3000/api/specialites/medecin-specialite?page=1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInJvbGUiOiJwYXRpZW50IiwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NTQ3MTQ5NywiZXhwIjoxNzc4MDYzNDk3fQ.XRSf06SFnwYk18I7qxyrU7tXZrp9ekK25hqEVsK4-4w
+
+
+
+
+
+
+
+
+### Admin portie
+
+### Créer un user (medecin) OK
+POST http://localhost:3000/api/admin/creer-compte HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDQ2NCwiZXhwIjoxNzc3MTE2NDY0fQ.cgUvtdhZROvw3q7uUaFex9zmP0xXlOTVQLWwBAUJTto
+
+{
+    "fullName" : "Dr Sanogo Oussou",
+    "email" : "maremillogo10+17@gmail.com",
+    "password" : "12345678",
+    "specialiteId" : 18
+}
+
+
+### Stats donnnée total user, medecins, patient, horaires, rendezvous OK
+GET http://localhost:3000/api/admin/stats HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDQ2NCwiZXhwIjoxNzc3MTE2NDY0fQ.cgUvtdhZROvw3q7uUaFex9zmP0xXlOTVQLWwBAUJTto
+
+### liste user OK
+GET http://localhost:3000/api/admin/user?page=1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDQ2NCwiZXhwIjoxNzc3MTE2NDY0fQ.cgUvtdhZROvw3q7uUaFex9zmP0xXlOTVQLWwBAUJTto
+
+
+### liste user mais uniquement medecin OK
+GET http://localhost:3000/api/admin/user-medecin HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDQ2NCwiZXhwIjoxNzc3MTE2NDY0fQ.cgUvtdhZROvw3q7uUaFex9zmP0xXlOTVQLWwBAUJTto
+
+
+### SToutes les specialités OK
+GET http://localhost:3000/api/admin/specialites/tous?page=1 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDQ2NCwiZXhwIjoxNzc3MTE2NDY0fQ.cgUvtdhZROvw3q7uUaFex9zmP0xXlOTVQLWwBAUJTto
+
+### affecttion liste especialte sans pagination pour l'affectation a un medecin
+GET http://localhost:3000/api/admin/specialites/affectation HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDQ2NCwiZXhwIjoxNzc3MTE2NDY0fQ.cgUvtdhZROvw3q7uUaFex9zmP0xXlOTVQLWwBAUJTto
+
+
+### SToutes les rdv confirmé qui sont en cours avec info patient et medecin
+GET http://localhost:3000/api/admin/rdv HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDQ2NCwiZXhwIjoxNzc3MTE2NDY0fQ.cgUvtdhZROvw3q7uUaFex9zmP0xXlOTVQLWwBAUJTto
+
+
+### desactiver ou activer compte user OK
+PUT http://localhost:3000/api/admin/user/15 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDQ2NCwiZXhwIjoxNzc3MTE2NDY0fQ.cgUvtdhZROvw3q7uUaFex9zmP0xXlOTVQLWwBAUJTto
+
+
+### Annuler un rdv par l'admin OK
+PUT http://localhost:3000/api/admin/annuler/8 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDQ2NCwiZXhwIjoxNzc3MTE2NDY0fQ.cgUvtdhZROvw3q7uUaFex9zmP0xXlOTVQLWwBAUJTto
+
+{
+    "motif" : ""
+}
+
+
+### Ajouyer une specialite OK
+POST http://localhost:3000/api/specialites/ajouter HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDQ2NCwiZXhwIjoxNzc3MTE2NDY0fQ.cgUvtdhZROvw3q7uUaFex9zmP0xXlOTVQLWwBAUJTto
+
+{
+    "nom" : "Anesthésite",
+    "description" : ""
+}
+
+### modifier une specialite OK
+PUT http://localhost:3000/api/specialites/modifier/24 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDQ2NCwiZXhwIjoxNzc3MTE2NDY0fQ.cgUvtdhZROvw3q7uUaFex9zmP0xXlOTVQLWwBAUJTto
+
+{
+    "nom" : "Anesthésisteee",
+    "description" : ""
+}
+
+
+### supprimer des specialites OK 
+DELETE http://localhost:3000/api/specialites/supprimer/24 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDQ2NCwiZXhwIjoxNzc3MTE2NDY0fQ.cgUvtdhZROvw3q7uUaFex9zmP0xXlOTVQLWwBAUJTto
+
+
