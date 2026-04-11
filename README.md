@@ -8,65 +8,65 @@ git clone https://github.com/mareaugustin/AlloDoc
 ```
 
 ### Backend:
-## Naviguer vers le dossier backend
+#### Naviguer vers le dossier backend
 ```
 cd backend
 ```
 
 
-## Installer les dépendances
+#### Installer les dépendances
 ```
 npm install
 ```
 
-## Créer et configurer le fichier .env (voir section Configuration)
+#### Créer et configurer le fichier .env (voir section Configuration)
 ```
 cp .env.example .env
 ```
 
-### Créer la base de données
+#### Créer la base de données
 ```
 voir le fichier db.sql
 ```
 
-## Créer l'admin par défaut
+#### Créer l'admin par défaut
 ```
 npm run seed
 ```
 
-## Lancer le serveur en mode développement
+#### Lancer le serveur en mode développement
 ```
 npm run dev
 ```
 
 
 ### FRONTEND - MOBILE
-## Naviguer vers le dossier frontend
+#### Naviguer vers le dossier frontend
 ```
 cd frontend
 ```
 
-## Installer les dépendances
+#### Installer les dépendances
 ```
 npm install
 ```
 
-## Lancer le serveur metro
+#### Lancer le serveur metro
 ```
 npm start
 ```
 
-## Dans un autre terminal, lancer Android
+#### Dans un autre terminal, lancer Android
 ```
 npm run android
 ```
 
 
-### FAITE REFERENCES AU .env.example pour la
-### creation du DB et laisser la configuration du ### mail par defaut pour utisation
+#### FAITE REFERENCES AU .env.example pour la
+#### creation du DB et laisser la configuration du #### mail par defaut pour utisation
 
 
-## ARCHITECTURE BACKEND
+#### ARCHITECTURE BACKEND
 ```
 backend/
 ├── src/
@@ -85,7 +85,7 @@ backend/
 ```
 
 
-## ARCHITECTURE MOBILE FRONTEND
+#### ARCHITECTURE MOBILE FRONTEND
 ```
 frontend/
 ├── src/
