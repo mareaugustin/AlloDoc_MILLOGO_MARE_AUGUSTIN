@@ -71,13 +71,13 @@ npm run android
 backend/
 ├── src/
 │   ├── controllers/      # Logique métier des routes
-│   ├── cron/            # Tâches planifiées
+│   ├── cron/            # Tâches planifiées pour mettre à jour les rdv passés
 │   ├── database/        # Configuration et connexion DB
-│   ├── middlewares/     # Middlewares (auth, validation, etc.)
-│   ├── models/          # Modèles de données
+│   ├── middlewares/     # Middlewares (auth, validation)
+│   ├── models/          # Modèles de données (communication avec la base de données)
 │   ├── routes/          # Définition des routes API
-│   ├── seeders/         # Scripts de admin DB
-│   ├── utils/           # Fonctions utilitaires
+│   ├── seeders/         # Scripts de création de l'admin
+│   ├── utils/           # Fonctions utilitaires (envoie de mail et le formatage de date)
 │   └── app.js           # Configuration Express
 ├── server.js            # Point d'entrée du serveur
 ├── .env.example         # Template des variables d'environnement
@@ -94,10 +94,10 @@ frontend/
 │   │   ├── commons/     # Composants réutilisables
 │   │   └── specifics/   # Composants spécifiques
 │   ├── ecrans/          # Écrans de l'application
-│   ├── hooks/           # Hooks personnalisés React
-│   ├── services/        # Services API
+│   ├── hooks/           # Hooks personnalisés pour les appels API
+│   ├── services/        # Services
 │   ├── tabs/            # Navigation par onglets
-│   └── vues/            # Vues complexes
+│   └── vues/            # Vues mobile utilisateur
 ├── App.tsx              # Composant racine
 └── package.json
 ```
