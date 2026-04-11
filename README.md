@@ -5,42 +5,63 @@ GUIDE D'INSTALLATION
 cloner le repo
 
 Backend:
-# Naviguer vers le dossier backend
+## Naviguer vers le dossier backend
+```
 cd backend
+```
 
-# Installer les dépendances
+
+## Installer les dépendances
+```
 npm install
+```
 
-# Créer et configurer le fichier .env (voir section Configuration)
+## Créer et configurer le fichier .env (voir section Configuration)
+```
 cp .env.example .env
+```
 
-# Créer la base de données (voir le fichier db.sql)
+## Créer la base de données (voir le fichier db.sql)
 
-# Créer l'admin par défaut
+## Créer l'admin par défaut
+```
 npm run seed
+```
 
-# Lancer le serveur en mode développement
+## Lancer le serveur en mode développement
+```
 npm run dev
+```
 
 
-FRONTEND:
-# Naviguer vers le dossier frontend
+FRONTEND - MOBILE
+## Naviguer vers le dossier frontend
+```
 cd frontend
+```
 
-# Installer les dépendances
+## Installer les dépendances
+```
 npm install
+```
 
-# Lancer le projet
-npm run start
+## Lancer le serveur metro
+```
+npm start
+```
 
-# Dans un autre terminal, lancer sur Android
+## Dans un autre terminal, lancer Android
+```
 npm run android
+```
 
 
-FAITE REFERENCES AU .env.example pour la creation du DB et laisser la configuration du mail et les identifiant des l'admin par defaut pour utisation
+## FAITE REFERENCES AU .env.example pour la
+## creation du DB et laisser la configuration du ## mail par defaut pour utisation
 
 
-# ARCHITECTURE BACKEND
+## ARCHITECTURE BACKEND
+```
 backend/
 ├── src/
 │   ├── controllers/      # Logique métier des routes
@@ -55,8 +76,11 @@ backend/
 ├── server.js            # Point d'entrée du serveur
 ├── .env.example         # Template des variables d'environnement
 └── package.json
+```
 
-# ARCHITECTURE MOBILE FRONTEND
+
+## ARCHITECTURE MOBILE FRONTEND
+```
 frontend/
 ├── src/
 │   ├── assets/          # Images, fonts, icônes
@@ -70,10 +94,10 @@ frontend/
 │   └── vues/            # Vues complexes
 ├── App.tsx              # Composant racine
 └── package.json
+```
 
 
-
-# Documentation API - Système de Gestion de Rendez-vous Médicaux - ALLO DOC
+## Documentation API
 
 ## Base URL
 ```
