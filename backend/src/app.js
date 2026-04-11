@@ -3,6 +3,8 @@ const express = require('express')
 const cors = require('cors')
 const db = require('./database/db')
 const app = express()
+const logger = require("./utils/logger");
+const requestLogger = require("./middlewares/log.middleware");
 
 const AuthRoutes = require('./routes/auth.routes')
 const RendezVousRoutes = require('./routes/rdv.routes')
@@ -18,9 +20,11 @@ app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({extended: true}))
 
+app.use(requestLogger);
+
 app.use((req, res, next)=>{
     try {
-        req.db = db,
+        req.db = db;
         next()
     } catch (error) {
         res.status(500).json({
@@ -29,6 +33,9 @@ app.use((req, res, next)=>{
         })
     }
 })
+app.get("/test-error", (req, res) => {
+    throw new Error("Test erreur logger");
+});
 
 app.use('/api/auth', AuthRoutes)
 app.use('/api/rdv', RendezVousRoutes)
@@ -43,6 +50,19 @@ app.use((req, res) => {
     res.status(404).json({
         success: false,
         message: 'Route non trouvée'
+    });
+});
+
+app.use((err, req, res, next) => {
+    logger.error({
+        message: err.message,
+        stack: err.stack,
+        method: req.method,
+        url: req.originalUrl
+    });
+
+    res.status(500).json({
+        message: "Erreur interne du serveur"
     });
 });
 

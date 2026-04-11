@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Text, View , StyleSheet, FlatList, Modal} from "react-native";
+import { Text, View , StyleSheet, FlatList, Modal, Alert} from "react-native";
 import HeaderComponent from "../../components/specifics/Header";
 import { useGet } from "../../hooks/useGet";
 import { useGetAllPage } from "../../hooks/useGetAlllPages";
@@ -115,8 +115,8 @@ export default function GestionMedecin({navigation}){
                 getData()
                 Toast.show({
                     type: 'success',
-                    text1: 'Ejout réussie',
-                    text2: 'La specialité a été ajoutée'
+                    text1: 'Création de compte réussie',
+                    text2: 'Le medecin sera notifié de ses identifiant'
                 })
                 resetL()
                 
@@ -221,7 +221,7 @@ export default function GestionMedecin({navigation}){
                         contentContainerStyle={{gap: 10, paddingBottom: 300}}
                         keyExtractor={(item)=>item.id.toString()}
                         renderItem={({item})=>(<CardMedecin item={item} 
-                          onPressEdit={null}
+                          onPressEdit={()=>{Alert.alert('Info', 'Fonctionalité pas encore fonctionnelle')}}
                             onPress={()=>{
                                 setVisibleDes(true)
                                 setSelect(item.id)
@@ -279,7 +279,6 @@ export default function GestionMedecin({navigation}){
             pressNon={()=>{setCreer(false)}}
             pressOui={handleCreate}
             loading={creerL}
-
             specialites={affSpe}
             selectedSpecialite={selectS}
             onSelectSpecialite={setSelectS}

@@ -1,19 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View , StyleSheet} from "react-native";
 import HeaderComponent from "../../components/specifics/Header";
 import { useGet } from "../../hooks/useGet";
 import Loader from "../../components/commons/LoadingComponent";
 import CardStats from "../../components/specifics/admin/CardStats";
+import ModalConfirmation from "../../components/commons/ModalConfirmation";
+import { removeToken } from "../../services/AuthStorage";
+import Toast from "react-native-toast-message";
 
-export default function Accueil(){
+export default function Accueil({navigation}){
 
 
+    const [logout, setLogout] = useState(false)
     const {loading, error, data, getData} = useGet('/admin/stats')
 
+    async function handleLogout() {
+        await removeToken()
+        navigation.replace('auth')
+        Toast.show({
+            type: 'success',
+            text1: 'Déconnexion réussie',
+            text2: 'Veuillez vous reconnecter'
+        })
+
+    }
 
     return(
+        <>
         <View style={styles.container}>
-            <HeaderComponent title="Bienvenue" icone="dashboard" />
+            <HeaderComponent title="Bienvenue" icone="sign-out" onPress={()=>{setLogout(true)}}/>
             <View style={styles.conu}>
                 <View style={styles.conud}>
                     <Text style={styles.conuo}>Total Utilisateurs</Text>
@@ -65,6 +80,14 @@ export default function Accueil(){
 
 
         </View>
+
+        <ModalConfirmation
+            visible={logout}
+            onRequestClose={()=>{setLogout(!logout)}}
+            pressNon={()=>{setLogout(!logout)}}
+            pressOui={()=>{handleLogout()}}
+        />
+        </>
     )
 }
 

@@ -1,13 +1,18 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Icone from "../commons/IconeComponent";
+import ButtonComponent from "../commons/ButtonComponent";
 
 
-export default function HeaderComponent({title, icone}){
+export default function HeaderComponent({title, icone, onPress}){
     return(
         <View style={styles.container}>
             <Text style={styles.tit}>{title}</Text>
-            <Icone nom={icone} taille={24} color={'gray'} />
+            <ButtonComponent
+                onPress={onPress}
+            >
+                <Icone nom={icone} taille={24} color={'gray'} />
+            </ButtonComponent>
         </View>
     )
 }

@@ -73,7 +73,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInJvbGUiO
 {
     "date" : "2026-05-28",
     "heures" : "22:15",
-    "medecinId" : 12
+    "medecinId" : 80
 }
 
 
@@ -234,7 +234,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZ
 
 
 ### SToutes les rdv confirmé qui sont en cours avec info patient et medecin
-GET http://localhost:3000/api/admin/rdv HTTP/1.1
+GET http://localhost:3000/api/admin/rdv?page=1 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidmVyaWZpZSI6MSwiYWN0aWYiOjEsImlhdCI6MTc3NDUyNDQ2NCwiZXhwIjoxNzc3MTE2NDY0fQ.cgUvtdhZROvw3q7uUaFex9zmP0xXlOTVQLWwBAUJTto
 
 
