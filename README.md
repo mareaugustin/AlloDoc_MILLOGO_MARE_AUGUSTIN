@@ -1,10 +1,13 @@
 # AlloDoc
 
-GUIDE D'INSTALLATION
+### GUIDE D'INSTALLATION
 
-cloner le repo
+### cloner le repo
+```
+https://github.com/mareaugustin/AlloDoc
+```
 
-Backend:
+### Backend:
 ## Naviguer vers le dossier backend
 ```
 cd backend
@@ -21,7 +24,10 @@ npm install
 cp .env.example .env
 ```
 
-## Créer la base de données (voir le fichier db.sql)
+### Créer la base de données
+```
+voir le fichier db.sql
+```
 
 ## Créer l'admin par défaut
 ```
@@ -34,7 +40,7 @@ npm run dev
 ```
 
 
-FRONTEND - MOBILE
+### FRONTEND - MOBILE
 ## Naviguer vers le dossier frontend
 ```
 cd frontend
@@ -56,8 +62,8 @@ npm run android
 ```
 
 
-## FAITE REFERENCES AU .env.example pour la
-## creation du DB et laisser la configuration du ## mail par defaut pour utisation
+### FAITE REFERENCES AU .env.example pour la
+### creation du DB et laisser la configuration du ### mail par defaut pour utisation
 
 
 ## ARCHITECTURE BACKEND
