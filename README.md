@@ -1,10 +1,10 @@
 # AlloDoc
 
-### GUIDE D'INSTALLATION
+#### GUIDE D'INSTALLATION
 
 ### cloner le repo
 ```
-https://github.com/mareaugustin/AlloDoc
+git clone https://github.com/mareaugustin/AlloDoc
 ```
 
 ### Backend:
