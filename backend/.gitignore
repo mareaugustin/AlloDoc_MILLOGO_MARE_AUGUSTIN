@@ -14,5 +14,4 @@ node_modules/
 .env.*
 !.env.example
 
-.rest
-.rest.*
+*.rest
