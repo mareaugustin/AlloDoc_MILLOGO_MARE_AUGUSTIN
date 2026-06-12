@@ -106,7 +106,7 @@ export default function Connexion({navigation}){
                     <>
                     <Text style={styles.tex}>Pas de compte ?</Text>
                     <ButtonComponent
-                        onPress={null}
+                        onPress={()=>navigation.goBack()}
                         style={styles.button}
                     >
                         <Text style={styles.tex}>S'inscrire</Text>
